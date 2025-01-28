@@ -28,7 +28,7 @@ const library = new Library()
 const book1 = new Book("1984", "George Orwell", "123456789")
 const book2 = new Book("To Kill a Mockingbird", "Harper Lee", "987654321")
 const book3 = new Book("New Book", "John Dio", "123456789")
-const book4 = new Book("New Book 5", "John Dio 4", "123456789")
+const book4 = new Book("New Book Main", "John Dio 4", "123456789")
 
 
 library.addBook(book1)
