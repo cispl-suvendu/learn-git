@@ -32,8 +32,6 @@ library.addBook(book1)
 library.addBook(book2)
 library.listBooks()
 
-
-
 class Car {
     constructor(brand, model) {
         this.brand = brand
