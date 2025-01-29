@@ -1,14 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS Test</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="/index.js"></script>
 </head>
+
 <body>
-    <h1>hello world</h1>
-    <h4>Lorem ipsum doler set amet useed for printing and typing all over the world.</h4>
+    <div class="openAccount">
+        <h1>Open Account</h1>
+        <form id="openAccountForm">
+            <input type="text" id="owner" placeholder="Enter your name" required>
+            <input type="number" id="balance" placeholder="Enter initial balance" required>
+            <button type="submit">Open Account</button>
+        </form>
+    </div>
+    <div class="accountDetails" style="display: none;">
+        <h1>hello <span id="name">Name</span></h1>
+        <h4 id="greet"></h4>
+        <h4>Account Balance: <span id="inBalance"></span></h4>
+        <div>
+            <button id="buttonDeposit">Deposit</button>
+            <button id="buttonWithdraw">Withdraw</button>
+        </div>
+    </div>
+
+    <script src="/index.js"></script>
+    <script>
+
+        let newAccount = null;
+        document.getElementById('openAccountForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const owner = document.getElementById('owner').value;
+            const balance = document.getElementById('balance').value;
+            newAccount = new Account(owner, Number(balance));
+            document.querySelector('.openAccount').style.display = 'none';
+            document.querySelector('.accountDetails').style.display = 'block';
+            document.getElementById('name').innerText = newAccount.owner;
+            document.getElementById('greet').innerHTML = newAccount.greet();
+            document.getElementById('inBalance').innerText = newAccount.checkBalance();
+        });
+
+        document.getElementById('buttonDeposit').addEventListener('click', () => {
+            const amount = prompt('Enter amount to deposit');
+            newAccount.deposit(Number(amount));
+            document.getElementById('inBalance').innerText = newAccount.checkBalance();
+        });
+        document.getElementById('buttonWithdraw').addEventListener('click', () => {
+            const amount = prompt('Enter amount to withdraw');
+            newAccount.withDraw(Number(amount));
+            document.getElementById('inBalance').innerText = newAccount.checkBalance();
+        });
+    </script>
 </body>
-</html>                                  
+
+</html>
